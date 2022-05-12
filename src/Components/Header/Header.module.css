@@ -1,0 +1,12 @@
+header{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    background-color: bisque;
+    height: 40px;
+}
+
+.link {
+    padding-left: 10px;
+}
