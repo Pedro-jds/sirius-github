@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 /**
  * Sorts an array og objects, either in ascending or descending order, based on

@@ -6,6 +6,8 @@ import styles from "./SearchPage.module.css";
 import RepoList from "../RepoList/RepoList";
 
 
+import Loading from "../Loading/Loading";
+
 
 const SearchPage = () => {
   const [user, setUser] = useState("");
@@ -23,6 +25,7 @@ const SearchPage = () => {
 
   function searchUser() {
     setRepoList([]);
+    setLoading(true)
     api
       .get(`/users/${search}`)
       .then((response) => setUser(response.data))
@@ -31,19 +34,26 @@ const SearchPage = () => {
         alert("Usuário não encontrado");
         console.error("ops!" + err);
       });
+      setLoading(false)
     console.log(user);
   }
 
   function showRepo() {
+    setLoading(true)
     setUser(null)
     api
       .get(`/users/${search}/repos`)
       .then((response) => setRepoList(response.data))
+      
       .catch((err) => {
         console.error("ops!" + err);
       });
+    setLoading(false)  
     console.log(repoList);
   }
+
+
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className={styles.main}>
@@ -53,10 +63,10 @@ const SearchPage = () => {
         </label>
         <input type="submit" className="searchIcon" value={'Buscar'}  onClick={searchUser} />
       </div>
-      {!user ? null : (
-        <div className={styles.userProfile}>
+      {!user ? null :  (
+        loading? <Loading show={loading} />:<div className={styles.userProfile}>
 
-          <img src={user.avatar_url} alt="" width="200px" height="200px" />
+          <img src={user.avatar_url} alt="" width="150px" height="150px" />
           <span>Nome:{` ${user.name}`}</span>
 
           <span>Bio:{user.bio === null ? " Não disponivel" : user.bio}</span>
@@ -66,7 +76,7 @@ const SearchPage = () => {
           {user.public_repos===0? 'Este usuário não tem repositorios publicos':<button onClick={showRepo}>Ver repositorios...</button>}
         </div>
       )}
-      {repoList[0] === undefined ? null : (
+      {repoList[0] === undefined ? null : (loading? <Loading show={loading} />:
       <RepoList data={repoList}/>)}
     </div>
   );

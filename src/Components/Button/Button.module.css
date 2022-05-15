@@ -6,9 +6,11 @@
     border-radius: 5px;
     margin-top: 10px;
     font-weight: bold;
+    border: solid 1px antiquewhite;
 }
 
 .button:hover{
     background-color: antiquewhite;
     color: #161b22;
+    border: solid 1px #161b22;
 }

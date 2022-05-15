@@ -25,11 +25,13 @@ th {
     font-size: smaller;
     height: 3em;
     border-radius: 5px;
+    white-space: nowrap;
+    padding:1px 5px;
 }
 
 
 @media(max-width: 820px){
     table{
-        width: 95vw;
+        width: 99vw;
     }
 }

@@ -4,6 +4,10 @@ import Sort from "../Sort/Sort";
 import Modal from "../Modal/Modal";
 import styles from "./RepoList.module.css"
 import Button from "../Button/Button";
+import Loading from "../Loading/Loading";
+
+import {FaSort, FaSortUp, FaSortDown} from 'react-icons/fa'
+
 
 const RepoList = (props) => {
   const [repoList, setRepoList] = useState(props.data);
@@ -22,8 +26,8 @@ const RepoList = (props) => {
   }
 
   const SortButton = ({ direction, id, onClick, sortBy }) => {
-    const arrows = { ascending: "🔽", descending: "🔼" };
-    const arrow = sortBy === id ? arrows[direction] : "↕︎";
+    const arrows = { ascending: <FaSortDown/>, descending: <FaSortUp/> };
+    const arrow = sortBy === id ? arrows[direction] : <FaSort/>;
 
     return (
       <span id={id} onClick={onClick}>
@@ -43,7 +47,7 @@ const RepoList = (props) => {
         <thead>
           <tr>
             <th>
-              Nome
+              Nome{' '}
             <SortButton
                 direction={sortConfig?.direction}
                 id="name"
@@ -52,7 +56,7 @@ const RepoList = (props) => {
               />
             </th>
             <th>
-              Estrelas
+              Estrelas{' '}
               <SortButton
                 direction={sortConfig?.direction}
                 id="stargazers_count"
