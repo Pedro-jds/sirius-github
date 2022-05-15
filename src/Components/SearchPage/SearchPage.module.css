@@ -1,8 +1,54 @@
+
 .userProfile {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userProfile>img{
+    border-radius: 100px;
+    margin-bottom: 0.5em;
+}
+
+.userProfile > span {
+    color: antiquewhite;
+    margin-top: 0.3em;
+}
+
+.userProfile>button{
+    background-color: #161b22;
+    color: antiquewhite;
+    width: 150px;
+    padding: 0.2rem;
+    align-self: center;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.userProfile>button:hover{
+    background-color: antiquewhite;
+    color: #161b22;
 }
 
 .formSearch {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
+}
+
+.formSearch>input{
+    background-color: #161b22;
+    color: antiquewhite;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.formSearch>input:hover{
+    background-color: antiquewhite;
+    color: #161b22;
+}
+
+.formSearch>label>input{
+    padding: 0.5rem;
+    border-radius: 5px;
 }

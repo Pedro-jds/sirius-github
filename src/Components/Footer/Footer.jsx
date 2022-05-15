@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 const Footer = () => {
   return (
     <footer>
-      <p>Todos os direitos reservados</p>
+      <span>Todos os direitos reservados</span>
     </footer>
   )
 }

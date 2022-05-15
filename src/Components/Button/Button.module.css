@@ -1,0 +1,14 @@
+.button{
+    background-color: #161b22;
+    color: antiquewhite;
+    padding: 0.4em 0.6em;
+    align-self: center;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.button:hover{
+    background-color: antiquewhite;
+    color: #161b22;
+}

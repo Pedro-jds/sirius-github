@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import api from "../../Services/api";
 import Sort from "../Sort/Sort";
 import Modal from "../Modal/Modal";
+import styles from "./RepoList.module.css"
+import Button from "../Button/Button";
 
 const RepoList = (props) => {
   const [repoList, setRepoList] = useState(props.data);
@@ -36,12 +38,12 @@ const RepoList = (props) => {
   });
 
   return (
-    <div>
+    <div className={styles.main}>
       <table>
         <thead>
           <tr>
             <th>
-              Nome{" "}
+              Nome
             <SortButton
                 direction={sortConfig?.direction}
                 id="name"
@@ -50,7 +52,7 @@ const RepoList = (props) => {
               />
             </th>
             <th>
-              Estrelas{" "}
+              Estrelas
               <SortButton
                 direction={sortConfig?.direction}
                 id="stargazers_count"
@@ -64,16 +66,14 @@ const RepoList = (props) => {
         <tbody>
           {items.map((repo) => (
             <tr key={repo.id}>
-              <th>{repo.name}</th>
-              <th>{repo.stargazers_count}</th>
-              <th>
-                <button
-                  type="button"
+              <td>{repo.name}</td>
+              <td>{repo.stargazers_count}</td>
+              <td>
+                <Button
+                  text={'Ver'}
                   onClick={() => showRepoDetails(repo.full_name)}
-                >
-                  Mostrar
-                </button>
-              </th>
+                />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -92,7 +92,9 @@ const RepoList = (props) => {
         <p>Linguagem:{` ${repoDetails.language}`}</p>
         <p>Estrelas:{` ${repoDetails.stargazers_count}`}</p>
         <a href={repoDetails.html_url} target="blank">
-          Acessar repositorio
+          <Button
+          text={'Acessar repositório'}
+          />
         </a>
       </Modal>
     </div>

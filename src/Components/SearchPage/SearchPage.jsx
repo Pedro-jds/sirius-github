@@ -6,6 +6,7 @@ import styles from "./SearchPage.module.css";
 import RepoList from "../RepoList/RepoList";
 
 
+
 const SearchPage = () => {
   const [user, setUser] = useState("");
   const [search, setSearch] = useState("");
@@ -45,22 +46,23 @@ const SearchPage = () => {
   }
 
   return (
-    <div>
-      <form className={styles.formSearch} onSubmit={handleSubmit}>
+    <div className={styles.main}>
+      <div className={styles.formSearch} onSubmit={handleSubmit}>
         <label>
-          Buscar usuário:
-          <input type="search" name="search" onChange={handleInput} />
+          <input type="search" name="search" onChange={handleInput} placeholder="Buscar usuário..." />   
         </label>
-        <input type="submit" value="Enviar" onClick={searchUser} />
-      </form>
+        <input type="submit" className="searchIcon" value={'Buscar'}  onClick={searchUser} />
+      </div>
       {!user ? null : (
         <div className={styles.userProfile}>
+
           <img src={user.avatar_url} alt="" width="200px" height="200px" />
-          <p>{user.name}</p>
-          <p>Bio:{user.bio === null ? " Não disponivel" : user.bio}</p>
-          <p>Seguidores:{user.followers}</p>
-          <p>Seguindo:{user.following}</p>
-          <p>Email:{user.email === null ? " Não disponivel" : user.email}</p>
+          <span>Nome:{` ${user.name}`}</span>
+
+          <span>Bio:{user.bio === null ? " Não disponivel" : user.bio}</span>
+          <span>Seguidores:{user.followers}</span>
+          <span>Seguindo:{user.following}</span>
+          <span>Email:{user.email === null ? " Não disponivel" : user.email}</span>
           {user.public_repos===0? 'Este usuário não tem repositorios publicos':<button onClick={showRepo}>Ver repositorios...</button>}
         </div>
       )}
