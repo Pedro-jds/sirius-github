@@ -1,37 +1,40 @@
 .main {
-    margin: 0.3em;
-    
+  margin: 0.3em;
 }
 
-table{
-   width: 40vw;
+table {
+  width: 40vw;
 }
 
 td {
-    padding: 0.5em;
-    font-weight: 600;
-    font-size: small;
-    word-wrap: break-word;
-    word-break: break-all;
-    white-space: normal;
-    background-color: #21262d;
-    color: antiquewhite;
-    border-radius: 5px;
+  padding: 0.5em;
+  font-weight: 600;
+  font-size: small;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  background-color: #21262d;
+  color: antiquewhite;
+  border-radius: 5px;
 }
 
 th {
-    background-color: #161b22;
-    color: antiquewhite;
-    font-size: smaller;
-    height: 3em;
-    border-radius: 5px;
-    white-space: nowrap;
-    padding:1px 5px;
+  background-color: #161b22;
+  color: antiquewhite;
+  font-size: smaller;
+  height: 3em;
+  border-radius: 5px;
+  white-space: nowrap;
+  padding: 1px 5px;
 }
 
+.details {
+  color: antiquewhite;
+  margin-top: 1.2em;
+}
 
-@media(max-width: 820px){
-    table{
-        width: 99vw;
-    }
+@media (max-width: 820px) {
+  table {
+    width: 99vw;
+  }
 }

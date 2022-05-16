@@ -1,8 +1,8 @@
 main {
-    color: antiquewhite;
+  color: antiquewhite;
 }
 
-p, h2{
-    color: antiquewhite;
-    margin: 1em;
+.fontColor {
+  color: antiquewhite;
+  margin: 1em;
 }

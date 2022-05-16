@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import api from "../../Services/api";
 import Sort from "../Sort/Sort";
 import Modal from "../Modal/Modal";
-import styles from "./RepoList.module.css"
+import styles from "./RepoList.module.css";
 import Button from "../Button/Button";
-import Loading from "../Loading/Loading";
 
-import {FaSort, FaSortUp, FaSortDown} from 'react-icons/fa'
-
+import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 
 const RepoList = (props) => {
-  const [repoList, setRepoList] = useState(props.data);
+  const repoList = props.data;
   const [repoDetails, setRepoDetails] = useState("");
   const [showDetails, setShowDetails] = useState(false);
 
@@ -26,8 +24,8 @@ const RepoList = (props) => {
   }
 
   const SortButton = ({ direction, id, onClick, sortBy }) => {
-    const arrows = { ascending: <FaSortDown/>, descending: <FaSortUp/> };
-    const arrow = sortBy === id ? arrows[direction] : <FaSort/>;
+    const arrows = { ascending: <FaSortDown />, descending: <FaSortUp /> };
+    const arrow = sortBy === id ? arrows[direction] : <FaSort />;
 
     return (
       <span id={id} onClick={onClick}>
@@ -47,8 +45,8 @@ const RepoList = (props) => {
         <thead>
           <tr>
             <th>
-              Nome{' '}
-            <SortButton
+              Nome{" "}
+              <SortButton
                 direction={sortConfig?.direction}
                 id="name"
                 onClick={() => requestSort("name")}
@@ -56,7 +54,7 @@ const RepoList = (props) => {
               />
             </th>
             <th>
-              Estrelas{' '}
+              Estrelas{" "}
               <SortButton
                 direction={sortConfig?.direction}
                 id="stargazers_count"
@@ -74,7 +72,7 @@ const RepoList = (props) => {
               <td>{repo.stargazers_count}</td>
               <td>
                 <Button
-                  text={'Ver'}
+                  text={"Ver"}
                   onClick={() => showRepoDetails(repo.full_name)}
                 />
               </td>
@@ -87,18 +85,22 @@ const RepoList = (props) => {
         onClose={() => setShowDetails(false)}
         show={showDetails}
       >
-        <p>
+        <span className={styles.details}>
           Descrição:
-          {` ${repoDetails.description === null
-            ? " Não disponivel"
-            : repoDetails.description}`}
-        </p>
-        <p>Linguagem:{` ${repoDetails.language}`}</p>
-        <p>Estrelas:{` ${repoDetails.stargazers_count}`}</p>
+          {` ${
+            repoDetails.description === null
+              ? " Não disponivel"
+              : repoDetails.description
+          }`}
+        </span>
+        <span className={styles.details}>
+          Linguagem:{` ${repoDetails.language}`}
+        </span>
+        <span className={styles.details}>
+          Estrelas:{` ${repoDetails.stargazers_count}`}
+        </span>
         <a href={repoDetails.html_url} target="blank">
-          <Button
-          text={'Acessar repositório'}
-          />
+          <Button text={"Acessar repositório"} />
         </a>
       </Modal>
     </div>

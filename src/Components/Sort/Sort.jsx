@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Sorts an array og objects, either in ascending or descending order, based on
@@ -12,12 +12,12 @@ import React from 'react';
  */
 const sortTableData = (array, { key, direction }) => {
   return array.sort((a, b) => {
-    if (a[key] < b[key]) return direction === 'ascending' ? -1 : 1
-    if (a[key] > b[key]) return direction === 'ascending' ? 1 : -1
+    if (a[key] < b[key]) return direction === "ascending" ? -1 : 1;
+    if (a[key] > b[key]) return direction === "ascending" ? 1 : -1;
 
-    return 0
-  })
-}
+    return 0;
+  });
+};
 
 /**
  * A React hook that will sort a given array. The configuration object can
@@ -30,30 +30,30 @@ const sortTableData = (array, { key, direction }) => {
  * @returns {object}
  */
 const Sort = (items = [], config) => {
-  const [sortConfig, setSortConfig] = React.useState(config)
+  const [sortConfig, setSortConfig] = React.useState(config);
 
   const sortedItems = React.useMemo(() => {
     // If no config was defined then return the unsorted array
-    if (!sortConfig) return items
+    if (!sortConfig) return items;
 
-    return sortTableData(items, { ...sortConfig })
-  }, [items, sortConfig])
+    return sortTableData(items, { ...sortConfig });
+  }, [items, sortConfig]);
 
-  const requestSort = key => {
-    let direction = 'descending'
+  const requestSort = (key) => {
+    let direction = "descending";
 
     if (
       sortConfig &&
       sortConfig.key === key &&
-      sortConfig?.direction === 'descending'
+      sortConfig?.direction === "descending"
     ) {
-      direction = 'ascending'
+      direction = "ascending";
     }
 
-    setSortConfig({ key, direction })
-  }
+    setSortConfig({ key, direction });
+  };
 
-  return { items: sortedItems, requestSort, sortConfig }
-}
+  return { items: sortedItems, requestSort, sortConfig };
+};
 
-export default Sort
+export default Sort;
