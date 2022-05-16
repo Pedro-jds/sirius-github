@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import App from './App';
 
-test('renders learn react link', () => {
+test('Render home with button for search page', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const buttonElement = screen.getByText(/Acessar página de busca/i)
+   userEvent.click(buttonElement)
+
+   await waitFor(()=>
+    expect(screen.getByText("Buscar"))
+    )
 });
+

@@ -20,7 +20,6 @@ const RepoList = (props) => {
         console.error("ops!" + err);
       });
     setShowDetails(true);
-    console.log(repoDetails);
   }
 
   const SortButton = ({ direction, id, onClick, sortBy }) => {

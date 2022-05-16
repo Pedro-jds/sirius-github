@@ -26,7 +26,6 @@ const SearchPage = () => {
         alert("Usuário não encontrado");
         console.error("ops!" + err);
       });
-    console.log(user);
   }
 
   function showRepo() {
@@ -38,7 +37,6 @@ const SearchPage = () => {
       .catch((err) => {
         console.error("ops!" + err);
       });
-    console.log(repoList);
   }
 
   return (
@@ -64,17 +62,17 @@ const SearchPage = () => {
           <img src={user.avatar_url} alt="" width="150px" height="150px" />
           <span>Nome:{` ${user.name}`}</span>
           <span>
-            Bio:{user.bio === null ? " Não disponivel" : ` ${user.bio}`}
+            Bio:{user.bio === null ? " Não disponível" : ` ${user.bio}`}
           </span>
           <span>Seguidores:{` ${user.followers}`}</span>
           <span>Seguindo:{` ${user.following}`}</span>
           <span>
-            Email:{user.email === null ? " Não disponivel" : ` ${user.email}`}
+            Email:{user.email === null ? " Não disponível" : ` ${user.email}`}
           </span>
           {user.public_repos === 0 ? (
-            <span>'Este usuário não tem repositorios publicos'</span>
+            <span>'Este usuário não tem repositórios públicos'</span>
           ) : (
-            <button onClick={showRepo}>Ver repositorios...</button>
+            <button onClick={showRepo}>Ver repositórios...</button>
           )}
         </div>
       )}
